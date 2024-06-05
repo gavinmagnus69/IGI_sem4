@@ -1,0 +1,31 @@
+{% extends "extender.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reviews</title>
+</head>
+<header>
+    <a href="{% url 'entities:create_review' %}"><button>Review our club</button></a>
+    <a href="{% url 'entities:about' %}"><button>Back</button></a>
+</header>
+<body>
+    <div align="center">
+        <br/>
+        {% if reviews %}
+            {% for el in reviews %}
+            <p>Date: {{el.date}}</p>
+            <p>Rating: {{el.grade}}</p>
+            <p>Review: {{el.text}}</p>
+            <p>Name: {{el.name}}</p>
+            <br/>
+            {% endfor %}
+            {% else %}
+            <p>No reviews yet</p>
+            {% endif %}
+
+    </div>
+</body>
+</html>
+{% endblock content %}

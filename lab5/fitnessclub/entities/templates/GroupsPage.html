@@ -1,0 +1,24 @@
+{% extends "extender.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Groups</title>
+</head>
+<body>
+<div align="center">
+    {% if groups %}
+    {% for group in groups %}
+    <p><b>Group name </b> {{group.name}}</p>
+    <p><b>Entry price: </b>{{group.all_price}}</p>
+    <a href="{% url 'entities:group_buy' group.id %}"><button>More</button></a>
+    {% endfor %}
+    {% else %}
+    <p>There are no groups for you</p>
+    {% endif %}
+</div>
+<a href="{% url 'entities:user' %}"><button>Back</button></a>
+</body>
+</html>
+{% endblock content %}

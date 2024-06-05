@@ -1,0 +1,78 @@
+{% extends "extender.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coupons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header a {
+            text-decoration: none;
+        }
+        header button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        header button:hover {
+            background-color: #0056b3;
+        }
+        .content {
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .content h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .content p {
+            font-size: 16px;
+            color: #555;
+            margin: 5px 0;
+        }
+        .coupon {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="{% url 'entities:about' %}"><button>Back</button></a>
+</header>
+<div class="content">
+    <h1>Coupons</h1>
+    {% if coupons %}
+        {% for el in coupons %}
+        <div class="coupon">
+            <p><b>Name:</b> {{el.name}}</p>
+            <p><b>Expire date:</b> {{el.end_date}}</p>
+            <p><b>Description:</b> {{el.description}}</p>
+            <p><b>Code:</b> {{el.code}}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No coupons</p>
+    {% endif %}
+</div>
+</body>
+</html>
+{% endblock content %}

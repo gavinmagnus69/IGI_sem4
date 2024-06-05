@@ -1,0 +1,108 @@
+{% extends "extender.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header-buttons, .footer-buttons {
+            margin-bottom: 20px;
+        }
+        .header-buttons a, .footer-buttons a {
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .header-buttons button, .footer-buttons button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .header-buttons button:hover, .footer-buttons button:hover {
+            background-color: #0056b3;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            max-width: 600px;
+        }
+        .container h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+        .container p {
+            font-size: 16px;
+            color: #555;
+        }
+        .group-container {
+            margin-top: 20px;
+        }
+        .group-container p {
+            margin: 5px 0;
+        }
+        .group-container button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-buttons">
+        <a href="{% url 'entities:logout' %}"><button>Log out</button></a>
+        <a href="{% url 'entities:change_client' %}"><button>Edit profile</button></a>
+        <a href="{% url 'entities:homepage' %}"><button>Club</button></a>
+    </div>
+    <div class="container">
+        <p><b>Name:</b> {{client.first_name}} {{client.last_name}}</p>
+        <p><b>Age:</b> {{client.age}}</p>
+        {% if predicted_age %}
+            <p><b>Predicted age:</b> {{predicted_age}}</p>
+        {% endif %}
+        {% if predicted_gender %}
+            <p><b>Predicted gender:</b> {{predicted_gender}}</p>
+        {% endif %}
+        <p><b>Phone number:</b> {{client.phone_number}}</p>
+        <p><b>Expenses:</b> {{client.costs}}</p>
+        {% if client.card %}
+            <h2>Club card</h2>
+            <p><b>Name:</b> {{client.card.name}}</p>
+            <p><b>Discount:</b> {{client.card.discount}}%</p>
+            <p><b>Expire date:</b> {{client.card.exp_date}}</p>
+        {% endif %}
+    </div>
+    <div class="container group-container">
+        <h2>Your groups:</h2>
+        {% if groups %}
+            {% for group in groups %}
+                <p><b>Name of the group:</b> {{group.name}}</p>
+                <p><b>Price:</b> {{group.all_price}}</p>
+                <a href="{% url 'entities:group_details' group.id %}"><button>More</button></a>
+            {% endfor %}
+        {% else %}
+            <p>You have no groups yet</p>
+        {% endif %}
+    </div>
+    <div class="footer-buttons">
+        <p>You can receive a discount down here</p>
+        <a href="{% url 'entities:client_buy_card' %}"><button>Buy</button></a>
+        <p>Groups available for you</p>
+        <a href="{% url 'entities:groups' %}"><button>Groups</button></a>
+    </div>
+</body>
+</html>
+{% endblock content %}

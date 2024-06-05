@@ -1,0 +1,77 @@
+{% extends "extender.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        form p {
+            margin: 10px 0;
+        }
+        form input[type="submit"] {
+            background-color: #ffdd57;
+            border: none;
+            color: #333;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        form input[type="submit"]:hover {
+            background-color: #ffcc00;
+        }
+        form a {
+            text-decoration: none;
+        }
+        form button {
+            background-color: #ffdd57;
+            border: none;
+            color: #333;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        form button:hover {
+            background-color: #ffcc00;
+        }
+        form p.error {
+            color: #FF0000;
+        }
+    </style>
+</head>
+<body>
+<form method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        <label>{{field.label_tag}} <i>{{field.help_text}}</i></label>
+        <p>{{field}}</p>
+    {% endfor %}
+    {% if error %}
+        <p class="error">{{error}}</p>
+    {% endif %}
+    <input type="submit" value="Sign in">
+    <br/>
+    <a href="{% url 'entities:homepage' %}"><button type="button">Go back</button></a>
+</form>
+{% endblock content %}

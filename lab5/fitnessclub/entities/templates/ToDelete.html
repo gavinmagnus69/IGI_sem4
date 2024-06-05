@@ -1,0 +1,26 @@
+{% extends "extender.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our instructors</title>
+</head>
+<body>
+<a href="{% url 'entities:homepage' %}"><button>Back to homepage</button></a>
+<div align="center">
+    {% if instructors %}
+    {% for el in instructors %}
+        {% comment %} <img src="{{el.photo.url}}"> {% endcomment %}
+        <p>{{el.first_name}} {{el.last_name}}</p>
+        <p><a href="{% url 'entities:del_sel' el.id %}"><button>Delete</button></a></p>
+        <br/>
+    {% endfor %}
+    {% else %}
+        <p>We have no instructors yet</p>
+    {% endif %}
+</div>
+</body>
+</html>
+{% endblock content %}

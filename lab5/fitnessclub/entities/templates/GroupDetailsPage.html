@@ -1,0 +1,93 @@
+{% extends "extender.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Group</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+        h3 {
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .services {
+            margin-bottom: 20px;
+        }
+        .service-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Group name: {{group.name}}</h2>
+    <p><b>Entry price: </b>{{group.all_price}}</p>
+    <p><b>Group services</b></p>
+    {% if services %}
+    <div class="services">
+        {% for service in services %}
+        <div class="service-item">
+            <h3>Service</h3>
+            <p><b>Type: </b>{{service.typeOfservice}}</p>
+            <p><b>Hall: </b>{{service.hall.hall_name}}</p>
+            <p><b>Price: </b>{{service.price}}</p>
+            <p><b>Start time: </b>{{service.start_time}}</p>
+            <p><b>End time: </b>{{service.end_time}}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>There are no services yet</p>
+    {% endif %}
+    {% block for_buy %}
+    {% endblock for_buy %}
+    <a href="{% url 'entities:user' %}" class="btn">Back</a>
+</div>
+</body>
+</html>
+{% endblock content %}

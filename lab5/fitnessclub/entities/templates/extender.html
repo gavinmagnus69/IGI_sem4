@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fitness CLUB</title>
+   
+</head>
+<header>
+    <p>User Timezone: <span id="user_timezone"></span></p>
+    <script>
+        // Function to get user's timezone
+        function getUserTimezone() {
+            var userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            return userTimezone;
+        }
+
+        // Update the HTML content with the user's timezone
+        document.getElementById('user_timezone').innerText = getUserTimezone();
+    </script>
+</header>
+{% block content%}{% endblock content%}
+<header>
+    <a href="{% url 'entities:about' %}"><button>About us</button></a>
+    <a href="{% url 'entities:homepage' %}"><button>Main page</button></a>
+
+    <a href="{% url 'entities:user' %}"><button>My page</button></a>
+    <a href="{% url 'entities:login' %}"><button>Log in</button></a>
+    <a href="{% url 'entities:signin' %}"><button>Sign in</button></a>
+</header>
+</html>

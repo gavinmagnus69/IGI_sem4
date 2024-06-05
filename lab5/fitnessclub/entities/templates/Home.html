@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fitness CLUB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header pre {
+            font-size: 16px;
+            color: #ffdd57;
+        }
+        header p {
+            margin: 0;
+            padding: 5px;
+        }
+        header a {
+            text-decoration: none;
+        }
+        header button {
+            background-color: #ffdd57;
+            border: none;
+            color: #333;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        header button:hover {
+            background-color: #ffcc00;
+        }
+        body h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+        }
+        body div {
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 1200px;
+        }
+        body a {
+            text-decoration: none;
+        }
+        body button {
+            background-color: #ffdd57;
+            border: none;
+            color: #333;
+            padding: 15px 30px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        body button:hover {
+            background-color: #ffcc00;
+        }
+    </style>
+</head>
+<header>
+    <pre>{{tc}}</pre>
+    <p>Current date: {{ dt|date:"d/m/Y" }}</p>
+    <p>Your timezone: {{ tz }}</p>
+    <p>User Timezone: <span id="user_timezone"></span></p>
+    <script>
+        // Function to get user's timezone
+        function getUserTimezone() {
+            var userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            return userTimezone;
+        }
+
+        // Update the HTML content with the user's timezone
+        document.getElementById('user_timezone').innerText = getUserTimezone();
+    </script>
+</header>
+<header>
+    <a href="{% url 'entities:about' %}"><button>About us</button></a>
+    <a href="{% url 'entities:user' %}"><button>My page</button></a>
+    <a href="{% url 'entities:login' %}"><button>Log in</button></a>
+    <a href="{% url 'entities:signin' %}"><button>Sign in</button></a>
+</header>
+<body>
+<div align="center">
+    <h1>Welcome to the club, buddy!</h1>
+    
+</div>
+<div align="center">
+    <a href="{% url 'entities:our_instructors' %}"><button>Our instructors</button></a>
+    <a href="{% url 'entities:services' %}"><button>Our services</button></a>
+    <a href="{% url 'entities:halls' %}"><button>Our halls</button></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends "extender.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our halls</title>
+</head>
+
+<body>
+<a href="{% url 'entities:homepage' %}"><button>Back to homepage</button></a>
+<div align="center">
+    {% if projectiles %}
+        {% for el in projectiles %}
+            {% comment %} <img src="{{el.photo.url}}"> {% endcomment %}
+            <p>Hall name: {{el.h_name}}</p>
+            {% if el.prj %}
+                <p>Hall inventory:</p>
+                {% for el1 in el.prj %}
+                    <p>{{el1}}</p>
+                {% endfor %}    
+            {% endif %}
+            <br/>
+        {% endfor %}
+    {% else %}
+        <p>We have no halls yet</p>
+    {% endif %}
+</div>
+</body>
+</html>
+{% endblock content %}

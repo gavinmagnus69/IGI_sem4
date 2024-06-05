@@ -1,0 +1,19 @@
+{% extends "extender.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Age distribution</title>
+</head>
+<header>
+    <a href="{% url 'entities:homepage' %}"><button>Main page</button></a>
+</header>
+<body>
+<div align="center">
+    <h1>Age distribution</h1>
+    <img src="{% url 'entities:age_chart' %}"  width="800" height="600" alt="Age Distribution Chart">
+</div>
+</body>
+</html>
+{% endblock content %}

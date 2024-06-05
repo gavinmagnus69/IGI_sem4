@@ -1,0 +1,23 @@
+{% extends "extender.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About instructor</title>
+</head>
+<body>
+<div align="center">
+    <img src="{{instructor.photo.url}}">
+    <p><b>Name: </b> {{instructor.first_name}} {{instructor.last_name}} </p>
+    <p><b>Phone number: </b>{{instructor.phone_number}}</p>
+    {% if instructor.bio %}
+    <p><b>About instructor: </b>{{instructor.bio}}</p>
+    {% else %}
+    <p>Instructor didnt left anything about himself</p>
+    {% endif %}
+    <a href="{% url 'entities:our_instructors' %}"><button>Back</button></a>
+</div>
+</body>
+</html>
+{% endblock content %}

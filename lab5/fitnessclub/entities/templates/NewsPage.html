@@ -1,0 +1,34 @@
+{% extends "extender.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+</head>
+<header>
+    <a href="{% url 'entities:about' %}"><button>Back</button></a>
+</header>
+<body>
+    <div align="center">
+        <br/>
+        {% if news %}
+            {% for el in news%}
+            <p>Date: {{el.date}}</p>
+            <p>Title: {{el.title}}</p>
+            {% if el.picture %}
+            <img src="{{el.picture.url}}">
+            {% else %}
+            <p>no pic</p>
+            {% endif %}
+            <p>Description: {{el.description}}</p>
+            <p>About: {{el.text}}</p>
+            <br/>
+            {% endfor %}
+            {% else %}
+            <p>No news</p>
+            {% endif %}
+    </div>
+</body>
+</html>
+{% endblock content %}

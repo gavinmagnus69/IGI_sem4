@@ -1,0 +1,35 @@
+{% extends "extender.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>About us</title>
+</head>
+<header>
+    <a href="{% url 'entities:coupons' %}"><button>Coupons</button></a>
+    <a href="{% url 'entities:vacancies' %}"><button>Vacancies</button></a>
+    <a href="{% url 'entities:reviews' %}"><button>Reviews</button></a>
+    <a href="{% url 'entities:faq' %}"><button>FAQ</button></a>
+    <a href="{% url 'entities:company' %}"><button>About company</button></a>
+    <a href="{% url 'entities:news' %}"><button>News</button></a>
+    <a href="{% url 'entities:employees' %}"><button>Our employees</button></a>
+    <a href="{% url 'entities:homepage' %}"><button>Main page</button></a>
+</header>
+<body>
+<div align="center">
+    <h1>Main page</h1>
+    <p>Last article</p>
+    {% if article %}
+        <p>Publishing date: {{article.date}}</p>
+        <p>Name: {{article.title}}</p>
+        <p>Context: {{article.description}}</p>
+        <p>Description: {{article.text}}</p>
+    {% else %}
+        <p>No articles</p>
+    {% endif %}
+</div>
+</body>
+</html>
+{% endblock content %}

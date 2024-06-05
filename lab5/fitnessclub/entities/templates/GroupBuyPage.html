@@ -1,0 +1,11 @@
+
+{% extends "GroupDetailsPage.html" %}
+{% block for_buy %}
+<form method="POST">
+    {% csrf_token %}
+    <b>Coupon:</b>
+    <input type="text" size="10" name="coupon"><br/>
+    <i>Field is unneccessary</i>
+    <p><input type="submit" value="Enter group"></p>
+</form>
+{% endblock for_buy %}

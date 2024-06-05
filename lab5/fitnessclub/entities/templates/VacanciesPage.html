@@ -1,0 +1,28 @@
+{% extends "extender.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Help wanted</title>
+</head>
+<header>
+    <a href="{% url 'entities:about' %}"><button>Back</button></a>
+</header>
+<body>
+    <div align="center">
+        <br/>
+        {% if vacancies %}
+            {% for el in vacancies %}
+            <p>Job: {{el.name}}</p>
+            <p>Description: {{el.description}}</p>
+            <p>Salary: {{el.salary}}</p>
+            <br/>
+            {% endfor %}
+            {% else %}
+            <p>No vacancies</p>
+            {% endif %}
+    </div>
+</body>
+</html>
+{% endblock content %}

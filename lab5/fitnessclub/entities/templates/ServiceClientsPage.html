@@ -1,0 +1,25 @@
+{% extends "extender.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service clients</title>
+</head>
+<body>
+<a href="{% url 'entities:user' %}"><button>Back</button></a>
+<div align="center">
+    {% if clients %}
+    {% for el in clients %}
+        <p><b>Name: </b>{{el.first_name}} {{el.last_name}}</p>
+        <p><b>Age: </b>{{el.age}}</p>
+        <p><b>Phone number: </b>{{el.phone_number}}</p>
+        <br/>
+    {% endfor %}
+    {% else %}
+        <p>No clients yet</p>
+    {% endif %}
+</div>
+</body>
+</html>
+{% endblock content %}

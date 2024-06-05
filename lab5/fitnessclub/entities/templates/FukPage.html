@@ -1,0 +1,90 @@
+{% extends "extender.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header a {
+            text-decoration: none;
+        }
+        header button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        header button:hover {
+            background-color: #0056b3;
+        }
+        .content {
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .content h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .faq-item p {
+            font-size: 16px;
+            color: #555;
+            margin: 5px 0;
+        }
+        .faq-item .date {
+            font-weight: bold;
+        }
+        .faq-item .question {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .faq-item .answer {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="{% url 'entities:about' %}"><button>Back</button></a>
+</header>
+<div class="content">
+    <h2>Frequently Asked Questions</h2>
+    {% if faqs %}
+        {% for el in faqs %}
+        <div class="faq-item">
+            <p class="date">DATE: {{ el.date }}</p>
+            <p class="question">QUESTION: {{ el.question }}</p>
+            <p class="answer">ANSWER: {{ el.answer }}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>NOTHING HERE YET</p>
+    {% endif %}
+</div>
+</body>
+</html>
+{% endblock content %}
